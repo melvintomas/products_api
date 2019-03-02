@@ -8,8 +8,8 @@ let productSchema = new mongoose.Schema({
 
 let Product = mongoose.model('Product', productSchema);
 
-Product.getProducts = function(callback){
-    Product.find(callback)
+Product.getProducts = function(query,callback){
+    Product.find(query,callback)
 }
 
 Product.getProduct = function(id, callback){

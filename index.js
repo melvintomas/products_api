@@ -12,10 +12,7 @@ app.use(bodyParser.json())
 
 //get all products
 app.get('/products', (req,res) =>{
-    if (Object.keys(req.query).length == 0){
-        res.json(products)
-    }
-    Product.getProducts(function(err, products){
+    Product.getProducts(req.query,function(err, products){
         if(err){
             throw err;
         }
