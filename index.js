@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const port = 3000
 const Product = require("./model/Product")
@@ -8,6 +9,7 @@ const bodyParser = require('body-parser')
 mongoose.connect('mongodb://localhost:27017/products')
 
 // parse application/json
+app.use(cors({origin:"http://localhost:4200"}))
 app.use(bodyParser.json())
 
 //get all products
