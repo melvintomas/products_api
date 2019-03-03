@@ -14,47 +14,32 @@ app.use(bodyParser.json())
 
 //get all products
 app.get('/products', (req,res) =>{
-    Product.getProducts(req.query,function(err, products){
-        if(err){
-            throw err;
-        }
+    Product.getProducts(req.query).then(products =>{
         res.json(products)
     })
 })
 
 //get product by id
 app.get('/products/:id', (req,res) =>{
-    Product.getProduct(req.params.id, function(err, product){
-        if(err){
-            throw err;
-        }
+    Product.getProduct(req.params.id).then(product =>{
         res.json(product)
     })
 })
 
 app.put('/products/:id', (req,res) =>{
-    Product.updateProduct(req.params.id, req.body, function(err, product){
-        if(err){
-            throw err;
-        }
+    Product.updateProduct(req.params.id, req.body).then(product =>{
         res.json(product)
     })
 })
 
 app.delete('/products/:id', (req,res) =>{
-    Product.removeProduct(req.params.id, function(err, product){
-        if(err){
-            throw err;
-        }
+    Product.removeProduct(req.params.id).then(product =>{
         res.json(product)
     })
 })
 
 app.post('/products', (req,res) =>{
-    Product.addProduct(req.body, function(err, product){
-        if(err){
-            throw err;
-        }
+    Product.addProduct(req.body).then(product =>{
         res.json(product)
     })
 })
